@@ -9,6 +9,6 @@ namespace Sample.Services.Interfaces
     public interface IEmployeeService
     {
         Task<Guid> Save(UpdateEmployeeDTO dto);
-        Task<List<GetEmployeeDTO>> GetAll(string FirstName, string LastName, Gender? gender);
+        Task<List<GetEmployeeDTO>> GetAll(string FirstName, string LastName, Gender? Gender);
     }
 }

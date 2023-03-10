@@ -23,7 +23,7 @@ namespace Sample.Repositories
                 FirstName = dto.FirstName,
                 LastName = dto.LastName,
                 Age = dto.Age,
-                gender = dto.gender
+                Gender = dto.Gender
 
             });
             await _context.SaveChangesAsync();
@@ -37,7 +37,7 @@ namespace Sample.Repositories
             employee.FirstName = dto.FirstName;
             employee.LastName = dto.LastName;
             employee.Age = dto.Age;
-            employee.gender = dto.gender;
+            employee.Gender = dto.Gender;
             await _context.SaveChangesAsync();
 
             return true;
@@ -64,7 +64,7 @@ namespace Sample.Repositories
                     FirstName = x.FirstName,
                     LastName = x.LastName,
                     Age = x.Age,
-                    gender = x.gender,
+                     Gender = x.Gender,
                     FullName = $"{x.FirstName} {x.LastName}",
                 }
             ).ToListAsync();

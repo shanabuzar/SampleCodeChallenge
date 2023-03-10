@@ -22,13 +22,13 @@ namespace Tests.Unit.Sample.Repositories
                     FirstName = "John",
                     LastName = "John",
                     Age = 25,
-                    gender = Gender.Male,
+                    Gender = Gender.Male,
                 },
                 new Employee {
                     FirstName = "Smith",
                     LastName = "Smith",
                     Age = 25,
-                    gender = Gender.Male,
+                    Gender = Gender.Male,
                 }
 
             };

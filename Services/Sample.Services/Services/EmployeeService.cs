@@ -19,18 +19,18 @@ namespace Sample.Services
         public async Task<Guid> Save(UpdateEmployeeDTO dto)
         {
             if (dto.Id == Guid.Empty)
-                return await _repoService.Insert(new InsertEmployeeDTO { FirstName = dto.FirstName, LastName = dto.LastName, Age = dto.Age, gender = dto.gender });
+                return await _repoService.Insert(new InsertEmployeeDTO { FirstName = dto.FirstName, LastName = dto.LastName, Age = dto.Age, Gender = dto.Gender });
             else
                 await _repoService.Update(dto);
                 return dto.Id;
         }
 
-        public async Task<List<GetEmployeeDTO>> GetAll(string FirstName, string LastName, Gender? gender)
+        public async Task<List<GetEmployeeDTO>> GetAll(string FirstName, string LastName, Gender? Gender)
         { 
             var employees = await _repoService.GetAll();
             return employees.Where(x => (x.FirstName == FirstName || FirstName == string.Empty) && 
             (x.LastName == LastName || LastName == string.Empty) &&
-            (x.gender == gender || gender == null)).ToList();
+            (x.Gender == Gender || Gender == null)).ToList();
         }
 
     }

@@ -15,7 +15,7 @@ namespace Sample.Domains.Entities
         public string LastName { get; set; }
         [Required] 
         public int Age { get; set; }
-        public Gender gender { get; set; }
+        public Gender Gender { get; set; }
         [NotMapped]
         public string FullName { get; }
 

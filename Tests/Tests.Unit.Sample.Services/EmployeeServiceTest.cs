@@ -14,6 +14,45 @@ namespace Tests.Unit.Sample.Services
     public class EmployeeServiceTest
     {
         [TestMethod]
+        public void EmployeeService_GetAll()
+        {
+            //Arrange
+
+            var lstEmployees = new List<GetEmployeeDTO>
+            {
+                new GetEmployeeDTO {
+                    Id = Guid.NewGuid(),
+                    FirstName = "John",
+                    LastName = "John",
+                    Age = 25,
+                    Gender = Gender.Male,
+                    FullName = ""
+                },
+                new GetEmployeeDTO {
+                    Id = Guid.NewGuid(),
+                    FirstName = "Smith",
+                    LastName = "Smith",
+                    Age = 25,
+                    Gender = Gender.Male,
+                    FullName = ""
+                }
+
+            };
+
+
+            var mockRepo = new Mock<IEmployeeRepository>();
+            mockRepo.Setup(repo => repo.GetAll())
+                    .Returns(Task.FromResult(lstEmployees));
+            //Act
+
+            var result = new EmployeeService(mockRepo.Object).GetAll(string.Empty, string.Empty, null).Result;
+
+            //Assert
+
+            Assert.AreEqual(result.Count, 2);
+        }
+
+        [TestMethod]
         public void EmployeeService_Save()
         { 
             //Arrange
@@ -23,7 +62,7 @@ namespace Tests.Unit.Sample.Services
                 FirstName = "John",
                 LastName = "Smith",
                 Age = 12,
-                gender = Gender.Male
+                Gender = Gender.Male
             };
 
             var insertDto = new UpdateEmployeeDTO()
@@ -32,7 +71,7 @@ namespace Tests.Unit.Sample.Services
                 FirstName = "John",
                 LastName = "Smith",
                 Age = 12,
-                gender = Gender.Male
+                Gender = Gender.Male
             };
 
             var updateDto = new UpdateEmployeeDTO()
@@ -41,7 +80,7 @@ namespace Tests.Unit.Sample.Services
                 FirstName = "John",
                 LastName = "Smith",
                 Age = 12,
-                gender = Gender.Male
+                Gender = Gender.Male
             };
 
         var mockRepo = new Mock<IEmployeeRepository>();
@@ -57,46 +96,6 @@ namespace Tests.Unit.Sample.Services
             //Assert
 
             Assert.AreEqual(updateResult, updateDto.Id);
-        }
-
-
-        [TestMethod]
-        public void EmployeeService_GetAll()
-        { 
-            //Arrange
-
-            var employees = new List<GetEmployeeDTO>
-            {
-                new GetEmployeeDTO {
-                    Id = Guid.NewGuid(),
-                    FirstName = "John",
-                    LastName = "John",
-                    Age = 25,
-                    gender = Gender.Male,
-                    FullName = ""
-                },
-                new GetEmployeeDTO {
-                    Id = Guid.NewGuid(),
-                    FirstName = "Smith",
-                    LastName = "Smith",
-                    Age = 25,
-                    gender = Gender.Male,
-                    FullName = ""
-                }
-
-            };
-
-
-            var mockRepo = new Mock<IEmployeeRepository>();
-            mockRepo.Setup(repo => repo.GetAll())
-                    .Returns(Task.FromResult(employees));
-            //Act
-
-            var result = new EmployeeService(mockRepo.Object).GetAll(string.Empty, string.Empty, null).Result;
-
-            //Assert
-
-            Assert.AreEqual(result.Count, 2);
         }
     }
 }
