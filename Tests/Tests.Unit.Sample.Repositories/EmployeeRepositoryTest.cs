@@ -19,14 +19,14 @@ namespace Tests.Unit.Sample.Repositories
             var employees = new List<Employee>
             {
                 new Employee {
-                    FirstName = "abc",
-                    LastName = "abc",
+                    FirstName = "John",
+                    LastName = "John",
                     Age = 25,
                     gender = Gender.Male,
                 },
                 new Employee {
-                    FirstName = "xyz",
-                    LastName = "xyz",
+                    FirstName = "Smith",
+                    LastName = "Smith",
                     Age = 25,
                     gender = Gender.Male,
                 }

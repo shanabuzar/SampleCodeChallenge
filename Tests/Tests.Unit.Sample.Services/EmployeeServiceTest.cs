@@ -15,12 +15,13 @@ namespace Tests.Unit.Sample.Services
     {
         [TestMethod]
         public void EmployeeService_Save()
-        { //Arrange
+        { 
+            //Arrange
 
             var dto = new InsertEmployeeDTO()
             {
-                FirstName = "abc",
-                LastName = "xyz",
+                FirstName = "John",
+                LastName = "Smith",
                 Age = 12,
                 gender = Gender.Male
             };
@@ -28,8 +29,8 @@ namespace Tests.Unit.Sample.Services
             var dto2 = new UpdateEmployeeDTO()
             {
                 Id = Guid.Empty,
-                FirstName = "abc",
-                LastName = "xyz",
+                FirstName = "John",
+                LastName = "Smith",
                 Age = 12,
                 gender = Gender.Male
             };
@@ -37,8 +38,8 @@ namespace Tests.Unit.Sample.Services
             var dto1 = new UpdateEmployeeDTO()
             {
                 Id = Guid.NewGuid(),
-                FirstName = "abc",
-                LastName = "xyz",
+                FirstName = "John",
+                LastName = "Smith",
                 Age = 12,
                 gender = Gender.Male
             };
@@ -62,22 +63,23 @@ namespace Tests.Unit.Sample.Services
 
         [TestMethod]
         public void EmployeeService_GetAll()
-        { //Arrange
+        { 
+            //Arrange
 
             var employees = new List<GetEmployeeDTO>
             {
                 new GetEmployeeDTO {
                     Id = Guid.NewGuid(),
-                    FirstName = "abc",
-                    LastName = "abc",
+                    FirstName = "John",
+                    LastName = "John",
                     Age = 25,
                     gender = Gender.Male,
                     FullName = ""
                 },
                 new GetEmployeeDTO {
                     Id = Guid.NewGuid(),
-                    FirstName = "xyz",
-                    LastName = "xyz",
+                    FirstName = "Smith",
+                    LastName = "Smith",
                     Age = 25,
                     gender = Gender.Male,
                     FullName = ""
