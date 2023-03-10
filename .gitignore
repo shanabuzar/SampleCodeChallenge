@@ -1,0 +1,9 @@
+
+.vs/config/
+.vs/SampleWebApi/
+*.dll
+*.dll.config
+*.pdb
+packages/
+bin/
+obj/
