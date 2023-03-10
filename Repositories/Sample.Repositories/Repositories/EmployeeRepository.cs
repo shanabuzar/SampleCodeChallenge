@@ -26,9 +26,8 @@ namespace Sample.Repositories
                 gender = dto.gender
 
             });
-            entity.Id = Guid.NewGuid();
             await _context.SaveChangesAsync();
-            return entity.Id;
+            return Guid.NewGuid();
         }
         public async Task<bool> Update(UpdateEmployeeDTO dto)
         { 

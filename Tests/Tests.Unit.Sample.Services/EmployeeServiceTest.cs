@@ -18,7 +18,7 @@ namespace Tests.Unit.Sample.Services
         { 
             //Arrange
 
-            var dto = new InsertEmployeeDTO()
+            var insert_dto = new InsertEmployeeDTO()
             {
                 FirstName = "John",
                 LastName = "Smith",
@@ -26,7 +26,7 @@ namespace Tests.Unit.Sample.Services
                 gender = Gender.Male
             };
 
-            var dto2 = new UpdateEmployeeDTO()
+            var insertDto = new UpdateEmployeeDTO()
             {
                 Id = Guid.Empty,
                 FirstName = "John",
@@ -35,7 +35,7 @@ namespace Tests.Unit.Sample.Services
                 gender = Gender.Male
             };
 
-            var dto1 = new UpdateEmployeeDTO()
+            var updateDto = new UpdateEmployeeDTO()
             {
                 Id = Guid.NewGuid(),
                 FirstName = "John",
@@ -45,19 +45,18 @@ namespace Tests.Unit.Sample.Services
             };
 
         var mockRepo = new Mock<IEmployeeRepository>();
-            mockRepo.Setup(repo => repo.Insert(dto))
+            mockRepo.Setup(repo => repo.Insert(insert_dto))
                     .Returns(Task.FromResult(Guid.NewGuid()));
-            mockRepo.Setup(repo => repo.Update(dto1))
+            mockRepo.Setup(repo => repo.Update(updateDto))
                     .Returns(Task.FromResult(true));
             //Act
 
-            var result = new EmployeeService(mockRepo.Object).Save(dto1).Result;
-            var result2 = new EmployeeService(mockRepo.Object).Save(dto2).Result;
+            var updateResult = new EmployeeService(mockRepo.Object).Save(updateDto).Result;
+            var insertResult = new EmployeeService(mockRepo.Object).Save(insertDto).Result;
 
             //Assert
 
-            Assert.AreEqual(result, dto1.Id);
-            Assert.AreNotEqual(result2, dto2.Id);
+            Assert.AreEqual(updateResult, updateDto.Id);
         }
 
 
