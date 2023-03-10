@@ -7,3 +7,5 @@
 packages/
 bin/
 obj/
+/.vs/FullStackSampleCodeChallange/v16/.suo
+/.vs/slnx.sqlite
